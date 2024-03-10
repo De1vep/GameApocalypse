@@ -6,7 +6,7 @@ using UnityEngine;
 public class WeaponController : MonoBehaviour
 {
     [SerializeField] public Camera mainCam;
-    [SerializeField] public Transform bulletPos;
+    [SerializeField] public Transform GunPoint;
 
     [Header("Weapon stats")]
     [SerializeField] public GameObject prefab;
@@ -15,6 +15,7 @@ public class WeaponController : MonoBehaviour
     [SerializeField] public float fireRate;
     [SerializeField] public int pierce;
     [SerializeField] public float range;
+    [SerializeField] public float spread;
 
     protected float timer;
     protected bool canFire;
@@ -51,4 +52,5 @@ public class WeaponController : MonoBehaviour
         timer = fireRate;
         canFire = false;        
     }
+   
 }

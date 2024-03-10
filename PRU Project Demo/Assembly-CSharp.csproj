@@ -61,17 +61,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Cainos\Pixel Art Top Down - Basic\Script\TopDownCharacterController.cs" />
-    <Compile Include="Assets\Script\Weapon\PistolBulletController.cs" />
-    <Compile Include="Assets\Script\Weapon\PistolController.cs" />
+    <Compile Include="Assets\Script\Weapon\Gun\WeaponController.cs" />
+    <Compile Include="Assets\Script\Weapon\Gun\PistolController.cs" />
+    <Compile Include="Assets\Script\Weapon\Bullet\BulletController.cs" />
+    <Compile Include="Assets\Script\Weapon\Gun\ShotgunController.cs" />
     <Compile Include="Assets\Script\Map\PropController.cs" />
+    <Compile Include="Assets\Script\Weapon\Bullet\AutomaticRifleBulletController.cs" />
     <Compile Include="Assets\Cainos\Pixel Art Top Down - Basic\Script\PropsAltar.cs" />
-    <Compile Include="Assets\Script\Weapon\WeaponController.cs" />
+    <Compile Include="Assets\Script\Weapon\Gun\AutomaticRifleController.cs" />
     <Compile Include="Assets\Script\Map\MapController.cs" />
     <Compile Include="Assets\Cainos\Pixel Art Top Down - Basic\Script\SpriteColorAnimation.cs" />
+    <Compile Include="Assets\Script\Weapon\Bullet\ShotgunBulletController.cs" />
     <Compile Include="Assets\Script\Player\PlayerMovement.cs" />
-    <Compile Include="Assets\Script\Weapon\BulletController.cs" />
+    <Compile Include="Assets\Script\Weapon\Bullet\PistolBulletController.cs" />
+    <Compile Include="Assets\Script\Enemy\EnemySpawner.cs" />
     <Compile Include="Assets\Cainos\Pixel Art Top Down - Basic\Script\LayerTrigger.cs" />
     <Compile Include="Assets\Cainos\Pixel Art Top Down - Basic\Script\CameraFollow.cs" />
+    <Compile Include="Assets\Script\Enemy\EnemyMovement.cs" />
     <Compile Include="Assets\Script\Map\TerrainTrigger.cs" />
   </ItemGroup>
   <ItemGroup>

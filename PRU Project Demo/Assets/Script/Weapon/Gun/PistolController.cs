@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PistolController : WeaponController
@@ -15,7 +13,6 @@ public class PistolController : WeaponController
     protected override void Attack()
     {
         base.Attack();
-        GameObject bullet = Instantiate(prefab, bulletPos.position, Quaternion.identity);
-        bullet.GetComponent<PistolBulletController>().BulletDirection(bulletPos.right);
+        Instantiate(prefab, GunPoint.position, Quaternion.Euler(GunPoint.eulerAngles.x, GunPoint.eulerAngles.y, GunPoint.eulerAngles.z));
     }
 }

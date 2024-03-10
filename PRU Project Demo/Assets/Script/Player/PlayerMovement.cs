@@ -1,16 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] float speed = 8;
+    [Header("Player Stat")]
+    [SerializeField] float Speed = 8;
+    [SerializeField] private float MaxHealth = 50;
+    private float health;
+
     [SerializeField] private Rigidbody2D rb;
 
+    [Header("Weapon")]
+    [SerializeField] GameObject Pistol;
+    [SerializeField] GameObject Shotgun;
+    [SerializeField] GameObject AutomaticRifle;
+
     private float horizontal;
-    private float vertical;    
+    private float vertical;
     private bool isFacingRight = true;
+
+    private bool isInvincible = false;
+    private float iFrameDuration = 0.5f;
 
     [HideInInspector] public Vector2 moveDir;
 
@@ -19,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
+        health = MaxHealth;
     }
 
     // Update is called once per frame
@@ -27,14 +41,38 @@ public class PlayerMovement : MonoBehaviour
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
 
-        moveDir = new Vector2(horizontal, vertical);
+        if (Input.GetButton("Jump"))
+        {
+            Time.timeScale = 0;
+        }
+
+        if (Input.GetKey(KeyCode.Alpha1))
+        {
+            Pistol.SetActive(true);
+            Shotgun.SetActive(false);
+            AutomaticRifle.SetActive(false);
+        }
+        if (Input.GetKey(KeyCode.Alpha2))
+        {
+            Pistol.SetActive(false);
+            Shotgun.SetActive(true);
+            AutomaticRifle.SetActive(false);
+        }
+        if (Input.GetKey(KeyCode.Alpha3))
+        {
+            Pistol.SetActive(false);
+            Shotgun.SetActive(false);
+            AutomaticRifle.SetActive(true);
+        }
+
+
         //Flip();
     }
 
     private void FixedUpdate()
     {
-        rb.velocity = new Vector2(horizontal * speed, vertical * speed);
-        
+        rb.velocity = new Vector2(horizontal * Speed, vertical * Speed);
+
     }
 
     private void Flip()
@@ -48,14 +86,35 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-
-    private void OnCollisionEnter2D(Collision2D collision)
+    public void takeDamage(float damage)
     {
-
+        if (isInvincible)
+        {
+            iFrameDuration -= Time.deltaTime;
+            if (iFrameDuration <= 0)
+            {
+                isInvincible = false;
+            }
+        }
+        else
+        {
+            health -= damage;
+            Debug.Log(health);
+            if(health <= 0)
+            {
+                Destroy(gameObject);
+            }
+            isInvincible = true;
+            iFrameDuration = 1;
+        }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionExit2D(Collision2D collision)
     {
-
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            isInvincible = false;
+            iFrameDuration = 1;
+        }
     }
 }

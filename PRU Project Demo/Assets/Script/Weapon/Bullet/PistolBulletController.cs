@@ -3,20 +3,33 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PistolBulletController : BulletController
-{    
-    protected PistolController controller;
-    
+{       
     // Start is called before the first frame update
     protected override void Start()
     {
         base.Start();
 
         controller = FindObjectOfType<PistolController>();
-        bulletSpawnPoint = controller.GunPoint.position;
-        damage = controller.damage;
-        range = controller.range;
+		bulletSpawnPoint = controller.gunPoint.position;
+		rb.velocity = transform.right * controller.currentSpeed;
+	}
 
-        rb.velocity = transform.right * controller.speed;
-        transform.rotation = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z + 90);        
-    }
+	protected override void Update()
+	{
+		base.Update();
+		if (dis >= controller.currentRange)
+		{
+			Destroy(gameObject);
+		}
+	}
+
+	protected override void OnTriggerEnter2D(Collider2D collision)
+	{
+		base.OnTriggerEnter2D (collision);
+		if (collision.gameObject.CompareTag("Enemy"))
+		{
+			collision.transform.GetComponent<EnemyStat>().TakeDamage(controller.currentDamage * playerData.currentDamageMultiplier);
+			Destroy(gameObject);
+		}
+	}
 }

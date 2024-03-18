@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 6515819560225491991}
   - component: {fileID: 482576231765134673}
   - component: {fileID: 1946303555099686726}
+  - component: {fileID: -7765418957177089363}
+  - component: {fileID: 2141206754934185094}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -195,6 +197,43 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 6515819560225491991}
   animator: {fileID: 4360394336365009475}
-  MaxHealth: 50
-  Speed: 2
-  Damage: 25
+  enemyData: {fileID: -7765418957177089363}
+--- !u!114 &-7765418957177089363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7347608774367382587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0c143d7361e74c4eb3f571cc4812977, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyData: {fileID: 11400000, guid: f4650bf4317b681419fddaf4ffbffe3b, type: 2}
+  drop: {fileID: 2141206754934185094}
+  currentMaxHealth: 0
+  currentHealth: 0
+  currentSpeed: 0
+  currentDamage: 0
+--- !u!114 &2141206754934185094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7347608774367382587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42ae7ea455026d54c83456ec9ccc48d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  drops:
+  - name: Blue exp
+    prefab: {fileID: 3232151691510624147, guid: 0de5efa207692fe48a565af9bbdd5ae5,
+      type: 3}
+    rate: 100
+  - name: Green Exp
+    prefab: {fileID: 7947176962231565490, guid: a7475194b7962c443bcf9fdcfa00bb49,
+      type: 3}
+    rate: 2

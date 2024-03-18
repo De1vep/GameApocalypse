@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AutomaticRifleController : WeaponController
 {
-    // Update is called once per frame
-    protected override void Update()
+	// Update is called once per frame
+	protected override void Update()
     {
         base.Update();
 
@@ -14,6 +12,9 @@ public class AutomaticRifleController : WeaponController
     protected override void Attack()
     {
         base.Attack();
-        Instantiate(prefab, GunPoint.position, Quaternion.Euler(GunPoint.eulerAngles.x, GunPoint.eulerAngles.y, GunPoint.eulerAngles.z + Random.Range(-spread, spread)));
-    }
+		Instantiate(gunData.prefab, gunPoint.position, 
+            Quaternion.Euler(gunPoint.eulerAngles.x,
+            gunPoint.eulerAngles.y, gunPoint.eulerAngles.z + Random.Range(-currentSpread, currentSpread)),
+            GameObject.Find("Bullet").transform);
+	}
 }

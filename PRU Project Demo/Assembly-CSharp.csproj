@@ -60,18 +60,32 @@
     <Analyzer Include="D:\Unity\Hub\Editor\2022.3.16f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Script\SceneController.cs" />
     <Compile Include="Assets\Cainos\Pixel Art Top Down - Basic\Script\TopDownCharacterController.cs" />
     <Compile Include="Assets\Script\Weapon\Gun\WeaponController.cs" />
     <Compile Include="Assets\Script\Weapon\Gun\PistolController.cs" />
+    <Compile Include="Assets\Script\CharacterSelect.cs" />
     <Compile Include="Assets\Script\Weapon\Bullet\BulletController.cs" />
+    <Compile Include="Assets\Script\Player\PlayerDropCollect.cs" />
     <Compile Include="Assets\Script\Weapon\Gun\ShotgunController.cs" />
+    <Compile Include="Assets\Script\Weapon\GunScriptableObject.cs" />
+    <Compile Include="Assets\Script\Upgrades\UpgradeScriptableObject.cs" />
+    <Compile Include="Assets\Script\Drop\DropController.cs" />
     <Compile Include="Assets\Script\Map\PropController.cs" />
+    <Compile Include="Assets\Script\Player\PlayerScriptableObject.cs" />
     <Compile Include="Assets\Script\Weapon\Bullet\AutomaticRifleBulletController.cs" />
     <Compile Include="Assets\Cainos\Pixel Art Top Down - Basic\Script\PropsAltar.cs" />
+    <Compile Include="Assets\Script\Upgrades\HealthUpgrade.cs" />
+    <Compile Include="Assets\Script\Enemy\EnemyScriptableObject.cs" />
+    <Compile Include="Assets\Script\Upgrades\UpgradeManager.cs" />
+    <Compile Include="Assets\Script\Player\PlayerAnimationTest.cs" />
+    <Compile Include="Assets\Script\Drop\ExpGem.cs" />
     <Compile Include="Assets\Script\Weapon\Gun\AutomaticRifleController.cs" />
     <Compile Include="Assets\Script\Map\MapController.cs" />
+    <Compile Include="Assets\Script\Upgrades\Upgrade.cs" />
     <Compile Include="Assets\Cainos\Pixel Art Top Down - Basic\Script\SpriteColorAnimation.cs" />
     <Compile Include="Assets\Script\Weapon\Bullet\ShotgunBulletController.cs" />
+    <Compile Include="Assets\Script\Enemy\EnemyStat.cs" />
     <Compile Include="Assets\Script\Player\PlayerMovement.cs" />
     <Compile Include="Assets\Script\Weapon\Bullet\PistolBulletController.cs" />
     <Compile Include="Assets\Script\Enemy\EnemySpawner.cs" />
@@ -79,6 +93,8 @@
     <Compile Include="Assets\Cainos\Pixel Art Top Down - Basic\Script\CameraFollow.cs" />
     <Compile Include="Assets\Script\Enemy\EnemyMovement.cs" />
     <Compile Include="Assets\Script\Map\TerrainTrigger.cs" />
+    <Compile Include="Assets\Script\Upgrades\DamageMultiUpgrade.cs" />
+    <Compile Include="Assets\Script\Player\PlayerStat.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Cainos\Pixel Art Top Down - Basic\Changelog.txt" />

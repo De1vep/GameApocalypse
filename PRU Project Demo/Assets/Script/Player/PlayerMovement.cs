@@ -7,9 +7,7 @@ using UnityEngine.EventSystems;
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Player Stat")]
-    [SerializeField] float Speed = 8;
-    [SerializeField] private float MaxHealth = 50;
-    private float health;
+    [SerializeField] PlayerStat playerData;
 
     [SerializeField] private Rigidbody2D rb;
 
@@ -20,10 +18,7 @@ public class PlayerMovement : MonoBehaviour
 
     private float horizontal;
     private float vertical;
-    private bool isFacingRight = true;
 
-    private bool isInvincible = false;
-    private float iFrameDuration = 0.5f;
 
     [HideInInspector] public Vector2 moveDir;
 
@@ -32,7 +27,6 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
-        health = MaxHealth;
     }
 
     // Update is called once per frame
@@ -65,56 +59,11 @@ public class PlayerMovement : MonoBehaviour
             AutomaticRifle.SetActive(true);
         }
 
-
-        //Flip();
     }
 
     private void FixedUpdate()
     {
-        rb.velocity = new Vector2(horizontal * Speed, vertical * Speed);
-
+        rb.velocity = new Vector2(horizontal * playerData.currentSpeed, vertical * playerData.currentSpeed);
     }
 
-    private void Flip()
-    {
-        if (isFacingRight && horizontal < 0 || !isFacingRight && horizontal > 0)
-        {
-            isFacingRight = !isFacingRight;
-            Vector2 scale = transform.localScale;
-            scale.x *= -1;
-            transform.localScale = scale;
-        }
-    }
-
-    public void takeDamage(float damage)
-    {
-        if (isInvincible)
-        {
-            iFrameDuration -= Time.deltaTime;
-            if (iFrameDuration <= 0)
-            {
-                isInvincible = false;
-            }
-        }
-        else
-        {
-            health -= damage;
-            Debug.Log(health);
-            if(health <= 0)
-            {
-                Destroy(gameObject);
-            }
-            isInvincible = true;
-            iFrameDuration = 1;
-        }
-    }
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-            isInvincible = false;
-            iFrameDuration = 1;
-        }
-    }
 }

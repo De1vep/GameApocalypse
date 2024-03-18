@@ -1,4 +1,0 @@
-repository "PRU Project Demo@vuanh957@cloud"
-  path "/"
-    br "/main"
-    co "/main"

@@ -1,35 +1,55 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class WeaponController : MonoBehaviour
-{
-    [SerializeField] public Camera mainCam;
-    [SerializeField] public Transform GunPoint;
+{   
+    [SerializeField] protected GunScriptableObject gunData;
+	[SerializeField] public Transform gunPoint;
 
-    [Header("Weapon stats")]
-    [SerializeField] public GameObject prefab;
-    [SerializeField] public float damage;
-    [SerializeField] public float speed;
-    [SerializeField] public float fireRate;
-    [SerializeField] public int pierce;
-    [SerializeField] public float range;
-    [SerializeField] public float spread;
+	[HideInInspector] public float currentDamage;
+	[HideInInspector] public float currentSpeed;
+	[HideInInspector] public float currentFireRate;
+	[HideInInspector] public int currentPierce;
+	[HideInInspector] public float currentRange;
+	[HideInInspector] public float currentSpread;
 
-    protected float timer;
+	private Camera mainCam;
+
+	protected float timer;
     protected bool canFire;
     
     protected Vector3 mousePos;
     protected Vector3 rotation;
 
-    // Update is called once per frame
-    protected virtual void Update()
+	private void Awake()
+	{
+        gunData = CharacterSelect.GetGunData();
+
+		currentDamage = gunData.damage; 
+        currentSpeed = gunData.speed;
+        currentFireRate = gunData.fireRate;
+        currentPierce = gunData.pierce;
+        currentRange = gunData.range;
+        currentSpread = gunData.spread;
+
+		mainCam = Camera.main;
+	}
+
+	// Update is called once per frame
+	protected virtual void Update()
     {
         mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
         rotation = mousePos - transform.position;
         float rotZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0, 0, rotZ);
+
+        if(rotZ > 90 || rotZ < -90)
+        {
+			transform.rotation = Quaternion.Euler(0, 180, 180 - rotZ);
+		}
+        else
+        {
+			transform.rotation = Quaternion.Euler(0, 0, rotZ);
+		}
+        
 
         if (!canFire)
         {
@@ -49,7 +69,8 @@ public class WeaponController : MonoBehaviour
 
     protected virtual void Attack()
     {
-        timer = fireRate;
+		
+		timer = currentFireRate;
         canFire = false;        
     }
    

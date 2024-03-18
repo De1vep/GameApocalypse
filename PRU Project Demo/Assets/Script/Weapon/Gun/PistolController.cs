@@ -2,9 +2,8 @@ using UnityEngine;
 
 public class PistolController : WeaponController
 {
-
-    // Update is called once per frame
-    protected override void Update()
+	// Update is called once per frame
+	protected override void Update()
     {
         base.Update();
         
@@ -13,6 +12,9 @@ public class PistolController : WeaponController
     protected override void Attack()
     {
         base.Attack();
-        Instantiate(prefab, GunPoint.position, Quaternion.Euler(GunPoint.eulerAngles.x, GunPoint.eulerAngles.y, GunPoint.eulerAngles.z));
+        Instantiate(gunData.prefab, gunPoint.position, 
+            Quaternion.Euler(gunPoint.eulerAngles.x, 
+            gunPoint.eulerAngles.y, gunPoint.eulerAngles.z),
+            GameObject.Find("Bullet").transform);
     }
 }

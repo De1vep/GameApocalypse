@@ -1,16 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private GameObject prefab;
+    [SerializeField] private GameObject boss;
     [SerializeField] private Transform playerPos;
     [SerializeField] private float spawnTime = 5;
+    [Header("Time till boss")]
+    [SerializeField] private int minute = 2;
+    [SerializeField] private int second = 0;
 
     private float timer = 0;
     private float angle;
     private float disFromPlayer;
+    private bool spawnBoss = false;
 
     // Start is called before the first frame update
     void Start()
@@ -21,12 +24,22 @@ public class EnemySpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		if (GameObject.Find("Player").transform == null)
-		{
-			return;
-		}
+        if (FindObjectOfType<PlayerMovement>().isDead)
+        {
+            return;
+        }
 
-		timer -= Time.deltaTime;
+        if(GameManager.instance.minute == minute && GameManager.instance.sencond == second && !spawnBoss)
+        {
+            angle = Random.Range(0, 2 * Mathf.PI);
+            disFromPlayer = Random.Range(15, 30);
+            //Add playerPos because if not, it will spawn around the origin (0, 0, 0)
+            Vector3 spawnPos = playerPos.position + new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), playerPos.position.z) * disFromPlayer;
+            Instantiate(boss, spawnPos, Quaternion.identity, GameObject.Find("Enemy").transform);
+            spawnBoss = true;
+        }
+
+        timer -= Time.deltaTime;
         if (timer < 0)
         {
             //A full circle corresponds to an angle of 2 PI,

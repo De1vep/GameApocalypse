@@ -15,7 +15,7 @@ MonoBehaviour:
   startingWeapon: {fileID: 0}
   Speed: 8
   MaxHealth: 50
-  Recovery: 0.1
+  Recovery: 0.3
   PickUpRange: 1
   DamageMultiplier: 1
   Growth: 1

@@ -1,51 +1,55 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterSelect : MonoBehaviour
 {
-	[SerializeField] public static CharacterSelect instance;
-	[SerializeField] public GunScriptableObject gunData;
-	[SerializeField] public PlayerScriptableObject playerData;
-	[SerializeField] public GameObject startingWeapon;
+    public static CharacterSelect instance;
+    [SerializeField] public GunScriptableObject gunData;
+    [SerializeField] public PlayerScriptableObject playerData;
 
-	void Awake()
-	{
-		if (instance == null)
-		{
-			instance = this;
-			//playerData.startingWeapon = startingWeapon;
+    private GameObject currentStartingWeapon;
 
-			DontDestroyOnLoad(gameObject);
-		}
-		else
-		{
-			Destroy(gameObject);
-		}
-	}
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
-	public static PlayerScriptableObject GetPlayerData()
-	{
-		return instance.playerData;
-	}
+    public static PlayerScriptableObject GetPlayerData()
+    {
+        return instance.playerData;
+    }
 
-	public static GunScriptableObject GetGunData()
-	{
-		return instance.gunData;
-	}
+    public static GunScriptableObject GetGunData()
+    {
+        return instance.gunData;
+    }
 
-	public void SelectWeaponData(GunScriptableObject gun)
-	{
-		gunData = gun;
-	}
+    public void SelectWeaponData(GunScriptableObject gun)
+    {
+        gunData = gun;
+    }
 
-	public void SelectWeapon(GameObject gun)
-	{
-		playerData.startingWeapon = gun;
-	}
+    public void SelectWeapon(GameObject gun)
+    {
+        currentStartingWeapon = gun;
+        playerData.startingWeapon = currentStartingWeapon;
+    }
 
-	public void SelectPlayer(PlayerScriptableObject player)
-	{
-		playerData = player;
-	}
+    public void SelectPlayer(PlayerScriptableObject player)
+    {
+        playerData = player;
+    }
+
+    public void DestroySingleton()
+    {
+        instance = null;
+        Destroy(gameObject);
+    }
 }

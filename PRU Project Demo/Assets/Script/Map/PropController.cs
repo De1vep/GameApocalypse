@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,13 +11,8 @@ public class PropController : MonoBehaviour
     {
         foreach (var position in propPositions)
         {
-            Instantiate(props[Random.Range(0,props.Count)], position.transform);
+            Instantiate(props[Random.Range(0, props.Count)], position.transform);
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

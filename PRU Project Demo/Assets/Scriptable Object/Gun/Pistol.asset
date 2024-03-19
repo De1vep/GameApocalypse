@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 3875186347869149603, guid: ebe162a93cfa0bb4dbff0c80c3680392, type: 3}
   damage: 12
-  speed: 15
+  speed: 20
   fireRate: 0.3
-  pierce: 1
+  pierce: 2
   range: 9
   spread: 0

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dec0f636d472fea48887726f64d11f05, type: 3}
   m_Name: Player 3
   m_EditorClassIdentifier: 
-  startingWeapon: {fileID: 3156445408303621664, guid: a0f8c75ee0bfb2649af8f2a666abad28,
+  startingWeapon: {fileID: 4015741701759757608, guid: 145c6a1186ef4f74482cf69764dae9a8,
     type: 3}
   Speed: 10
   MaxHealth: 50

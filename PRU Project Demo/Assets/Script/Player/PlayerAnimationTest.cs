@@ -4,31 +4,23 @@ using UnityEngine;
 
 public class PlayerAnimationTest : MonoBehaviour
 {
-	//[SerializeField] Rigidbody2D rb;
 	[SerializeField] Animator ani;
 	private float horizontal;
 	private float vertical;
-
-	// Start is called before the first frame update
-	void Start()
-	{
-
-	}
-
 	// Update is called once per frame
 	void Update()
 	{
 		horizontal = Input.GetAxisRaw("Horizontal");
 		vertical = Input.GetAxisRaw("Vertical");
 
-		if (Input.GetButton("Horizontal") && Input.GetButton("Vertical"))
+        if (Input.GetButton("Horizontal") && Input.GetButton("Vertical"))
 		{
 			ani.SetFloat("xVelocity", horizontal);
 			ani.SetFloat("yVelocity", vertical);
 			ani.SetBool("isFacingSide", true);
 		}
 		else if (Input.GetButton("Horizontal"))
-		{
+		{		
 			ani.SetFloat("xVelocity", horizontal);
 			ani.SetBool("isFacingSide", true);
 		}
@@ -37,6 +29,5 @@ public class PlayerAnimationTest : MonoBehaviour
 			ani.SetFloat("yVelocity", vertical);
 			ani.SetBool("isFacingSide", false);
 		}
-
 	}
 }

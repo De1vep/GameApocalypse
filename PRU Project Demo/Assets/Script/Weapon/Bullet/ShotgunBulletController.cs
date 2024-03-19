@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class ShotgunBulletController : BulletController
@@ -10,27 +7,27 @@ public class ShotgunBulletController : BulletController
     {
         base.Start();
 
-		controller = FindObjectOfType<ShotgunController>();
-		bulletSpawnPoint = controller.gunPoint.position;
-		rb.velocity = transform.right * controller.currentSpeed;
-	}
+        controller = FindObjectOfType<ShotgunController>();
+        bulletSpawnPoint = controller.gunPoint.position;
+        rb.velocity = transform.right * controller.currentSpeed;
+    }
 
-	protected override void Update()
-	{
-		base.Update();
-		if (dis >= controller.currentRange)
-		{
-			Destroy(gameObject);
-		}
-	}
+    protected override void Update()
+    {
+        base.Update();
+        if (dis >= controller.currentRange)
+        {
+            Destroy(gameObject);
+        }
+    }
 
-	protected override void OnTriggerEnter2D(Collider2D collision)
-	{
-		base.OnTriggerEnter2D(collision);
-		if (collision.gameObject.CompareTag("Enemy"))
-		{
-			collision.transform.GetComponent<EnemyStat>().TakeDamage(controller.currentDamage * playerData.currentDamageMultiplier);
-			Destroy(gameObject);
-		}
-	}
+    protected override void OnTriggerEnter2D(Collider2D collision)
+    {
+        base.OnTriggerEnter2D(collision);
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            collision.transform.GetComponent<EnemyStat>().TakeDamage(controller.currentDamage * playerData.currentDamageMultiplier);
+            Destroy(gameObject);
+        }
+    }
 }

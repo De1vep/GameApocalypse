@@ -236,4 +236,4 @@ MonoBehaviour:
   - name: Green Exp
     prefab: {fileID: 7947176962231565490, guid: a7475194b7962c443bcf9fdcfa00bb49,
       type: 3}
-    rate: 2
+    rate: 5

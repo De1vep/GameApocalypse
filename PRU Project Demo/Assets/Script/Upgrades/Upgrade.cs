@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Upgrade : MonoBehaviour
@@ -9,27 +7,27 @@ public class Upgrade : MonoBehaviour
 
     public int currentUpgradeLevel;
 
-	private void Awake()
-	{
-		currentUpgradeLevel = upgradeData.Level;
-	}
-
-	// Start is called before the first frame update
-	void Start()
+    private void Awake()
     {
-		stat = FindObjectOfType<PlayerStat>();		
+        currentUpgradeLevel = upgradeData.Level;
+    }
 
-		ApplyModifier();
-	}
+    // Start is called before the first frame update
+    void Start()
+    {
+        stat = FindObjectOfType<PlayerStat>();
+
+        ApplyModifier();
+    }
 
     public virtual void ApplyModifier()
     {
 
     }
 
-	public void LevelUp()
-	{
-		currentUpgradeLevel++;
-		ApplyModifier();
-	}
+    public void LevelUp()
+    {
+        currentUpgradeLevel++;
+        ApplyModifier();
+    }
 }

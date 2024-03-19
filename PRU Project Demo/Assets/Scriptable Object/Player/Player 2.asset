@@ -12,11 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dec0f636d472fea48887726f64d11f05, type: 3}
   m_Name: Player 2
   m_EditorClassIdentifier: 
-  startingWeapon: {fileID: 3156445408303621664, guid: a0f8c75ee0bfb2649af8f2a666abad28,
-    type: 3}
+  startingWeapon: {fileID: 0}
   Speed: 6
   MaxHealth: 70
-  Recovery: 0.3
+  Recovery: 0.5
   PickUpRange: 1
   DamageMultiplier: 1.2
-  Growth: 1
+  Growth: 0.8
